@@ -4,8 +4,8 @@ import * as React from "react";
 import {
   Sun,
   Moon,
-  Grid,
-  List,
+  // Grid,
+  // List,
   User,
   Headphones,
   ImagePlus,
