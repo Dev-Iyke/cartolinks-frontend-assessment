@@ -3,8 +3,7 @@ import { HomeCarousel } from "@/components/landing/HomeCarousel";
 
 export default function Home() {
   return (
-    <div className="text-2xl">
-      Home
+    <div className="my-6">
       <HomeCarousel/>
     </div>
   );

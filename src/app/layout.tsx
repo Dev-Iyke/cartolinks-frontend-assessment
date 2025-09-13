@@ -35,7 +35,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${roboto.variable} ${montserrat.variable} antialiased w-full max-w-[1440px] mx-auto font-roboto h-full min-h-screen`}
+        className={`${geistSans.variable} ${geistMono.variable} ${roboto.variable} ${montserrat.variable} antialiased w-full max-w-[1440px] p-4 md:p-6 mx-auto font-roboto h-full min-h-screen`}
       >
         {children}
       </body>
