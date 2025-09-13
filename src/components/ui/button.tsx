@@ -32,8 +32,8 @@ const buttonVariants = cva(
       },
     },
     defaultVariants: {
-      variant: "carousel",
-      size: "carousel",
+      variant: "default",
+      size: "default",
     },
   }
 );

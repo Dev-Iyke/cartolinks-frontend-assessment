@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Roboto, Montserrat } from "next/font/google";
 import "./globals.css";
+import { ThemeProvider } from "@/providers/ThemeProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -33,11 +34,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${roboto.variable} ${montserrat.variable} antialiased w-full max-w-[1440px] p-4 md:p-6 mx-auto font-roboto h-full min-h-screen`}
+        className={`${geistSans.variable} ${geistMono.variable} ${roboto.variable} ${montserrat.variable} antialiased w-full max-w-[1440px] p-4 md:p-6 mx-auto font-roboto h-full min-h-screen bg-background text-foreground`}
       >
-        {children}
+        <ThemeProvider>{children}</ThemeProvider>
       </body>
     </html>
   );

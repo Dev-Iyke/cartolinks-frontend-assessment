@@ -15,13 +15,17 @@ const CarouselCard = ({ card }: { card: CarouselCardProps }) => {
       <div>
         <span className="font-light text-base">NEW IMAGE MODEL</span>
       </div>
-      <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-center font-semibold">{title}</h1>
+      <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-center font-medium">
+        {title}
+      </h1>
       <div className="flex justify-between items-center gap-8 flex-wrap">
         <div>
           <h3 className="text-xl md:text-2xl font-semibold">{header}</h3>
           <p className="text-sm font-light max-w-sm w-full">{desc}</p>
         </div>
-        <Button className="mt-4">{buttonText}</Button>
+        <Button variant={"carousel"} size={"carousel"} className="mt-4">
+          {buttonText}
+        </Button>
       </div>
     </div>
   );
