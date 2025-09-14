@@ -1,7 +1,9 @@
+'use client'
 import { GenerateCardProps } from '@/lib/interface'
-import { Anchor, Image, LetterText, Mic2, Move, TransgenderIcon, Video, Wand2 } from 'lucide-react'
+import { Anchor, ChevronDown, Image, LetterText, Mic2, Move, TransgenderIcon, Video, Wand2 } from 'lucide-react'
 import React from 'react'
 import GenerateCard from './GenerateCard';
+import { Button } from '../ui/button';
 
 export const generateData: GenerateCardProps[] = [
   {
@@ -62,11 +64,18 @@ export const generateData: GenerateCardProps[] = [
   },
 ];
 const Generate = () => {
+  const [isShowingMore, toggleShowMore] = React.useState<boolean>(true);
   return (
     <div>
-      <h1 className='text-xl font-medium'>Generate</h1>
+      <div className='flex justify-between items-center'>
+        <h1 className='text-xl font-medium'>Generate</h1>
+        <Button variant={"ghost"} size={"sm"} className='hover:bg-muted text-blue-500' onClick={() => toggleShowMore(!isShowingMore)}>
+          <ChevronDown className='mr-2' size={16} />
+          {isShowingMore ? "Show less" : "Show all"}
+        </Button>
+      </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-4">
-        {generateData.map((card, index) => (
+        {generateData.slice(0, !isShowingMore ? 4 : generateData.length).map((card, index) => (
           <GenerateCard key={index} card={card} />
         ))}
       </div>

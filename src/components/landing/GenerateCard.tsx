@@ -5,7 +5,7 @@ import { GenerateCardProps } from "@/lib/interface";
 const GenerateCard = ({ card }: { card: GenerateCardProps }) => {
   const { iconBg, icon, title, desc, isNew } = card;
   return (
-    <div className="flex justify-start items-start gap-2 p-4 max-w-90 w-full">
+    <div className="flex justify-start items-start gap-2 p-4 sm:max-w-90 w-full">
       <div
         className={`flex justify-center items-center rounded-lg h-9 min-w-9 text-white ${iconBg}`}
       >
@@ -21,7 +21,7 @@ const GenerateCard = ({ card }: { card: GenerateCardProps }) => {
               </span>
             )}
           </div>
-          <p className="text-[10px] max-w-[150px] font-light">{desc}</p>
+          <p className="text-[10px] md:text-[11px] max-w-[150px] font-light">{desc}</p>
         </div>
         <Button className="bg-gray-200 text-black px-3 rounded-full text-[12px] font-normal hover:bg-gray-300 hover:scale-105 h-6 md:h-8">
           Open

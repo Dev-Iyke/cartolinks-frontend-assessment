@@ -4,7 +4,7 @@ import * as React from "react"
 import useEmblaCarousel, {
   type UseEmblaCarouselType,
 } from "embla-carousel-react"
-import { ArrowLeft, ArrowRight } from "lucide-react"
+import { ChevronLeft, ChevronRight } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
@@ -60,7 +60,6 @@ function Carousel({
   )
   const [canScrollPrev, setCanScrollPrev] = React.useState(false)
   const [canScrollNext, setCanScrollNext] = React.useState(false)
-
   const onSelect = React.useCallback((api: CarouselApi) => {
     if (!api) return
     setCanScrollPrev(api.canScrollPrev())
@@ -174,12 +173,14 @@ function CarouselItem({ className, ...props }: React.ComponentProps<"div">) {
 function CarouselPrevious({
   className,
   variant = "outline",
-  size = "icon",
+  size = "iconNav",
   ...props
 }: React.ComponentProps<typeof Button>) {
-  const { 
+  const {
     // orientation,
-     scrollPrev, canScrollPrev } = useCarousel()
+    scrollPrev,
+    canScrollPrev,
+  } = useCarousel();
 
   return (
     <Button
@@ -197,21 +198,23 @@ function CarouselPrevious({
       onClick={scrollPrev}
       {...props}
     >
-      <ArrowLeft />
+      <ChevronLeft />
       <span className="sr-only">Previous slide</span>
     </Button>
-  )
+  );
 }
 
 function CarouselNext({
   className,
   variant = "outline",
-  size = "icon",
+  size = "iconNav",
   ...props
 }: React.ComponentProps<typeof Button>) {
-  const { 
-    // orientation, 
-    scrollNext, canScrollNext } = useCarousel()
+  const {
+    // orientation,
+    scrollNext,
+    canScrollNext,
+  } = useCarousel();
 
   return (
     <Button
@@ -229,11 +232,64 @@ function CarouselNext({
       onClick={scrollNext}
       {...props}
     >
-      <ArrowRight />
+      <ChevronRight />
       <span className="sr-only">Next slide</span>
     </Button>
-  )
+  );
 }
+
+function CarouselDots() {
+  const { api } = useCarousel();
+  const [selected, setSelected] = React.useState<number>(0);
+  const [count, setCount] = React.useState<number>(0);
+
+  React.useEffect(() => {
+    if (!api) return;
+
+    const update = () => {
+      // number of scroll snaps (one per slide / snap)
+      const snaps = api.scrollSnapList?.()?.length ?? 0;
+      setCount(snaps);
+
+      // currently selected snap index
+      const idx =
+        typeof api.selectedScrollSnap === "function"
+          ? api.selectedScrollSnap()
+          : 0;
+      setSelected(idx);
+    };
+
+    update();
+    api.on("select", update);
+    api.on("reInit", update);
+
+    return () => {
+      api.off("select", update);
+      api.off("reInit", update);
+    };
+  }, [api]);
+
+  if (!api || count <= 0) return null;
+
+  return (
+    <div className="flex items-center gap-2" data-slot="carousel-dots">
+      {Array.from({ length: count }).map((_, i) => {
+        const isActive = i === selected;
+        return (
+          <button
+            key={i}
+            aria-label={`Go to slide ${i + 1}`}
+            className={`w-2 h-2 rounded-full transition-all ${
+              isActive ? "bg-blue-600 scale-110" : "bg-gray-300"
+            }`}
+            onClick={() => api.scrollTo(i)}
+          />
+        );
+      })}
+    </div>
+  );
+}
+
 
 export {
   type CarouselApi,
@@ -242,4 +298,5 @@ export {
   CarouselItem,
   CarouselPrevious,
   CarouselNext,
+  CarouselDots,
 }

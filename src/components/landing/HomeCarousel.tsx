@@ -4,6 +4,7 @@ import * as React from "react";
 import {
   Carousel,
   CarouselContent,
+  CarouselDots,
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
@@ -26,9 +27,15 @@ export function HomeCarousel() {
           </CarouselItem>
         ))}
       </CarouselContent>
-      <div className="flex justify-end gap-1 mx-8">
-        <CarouselPrevious className="rounded-full bg-gray-200" />
-        <CarouselNext className="rounded-full bg-gray-200" />
+      <div className="flex items-center justify-between gap-4 mx-8">
+        <div></div>
+        <CarouselDots />
+
+        {/* prev/next controls on the right */}
+        <div className="flex items-center gap-2">
+          <CarouselPrevious className="rounded-full bg-gray-200" />
+          <CarouselNext className="rounded-full bg-gray-200" />
+        </div>
       </div>
     </Carousel>
   );

@@ -29,6 +29,7 @@ const buttonVariants = cva(
         lg: "h-10 rounded-md px-6 has-[>svg]:px-4",
         carousel: "h-8 md:h-10 w-fit rounded-full px-4 md:px-6 has-[>svg]:px-4",
         icon: "size-9",
+        iconNav: "size-8",
       },
     },
     defaultVariants: {
