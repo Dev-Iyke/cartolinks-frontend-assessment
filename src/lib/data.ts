@@ -2,7 +2,7 @@ import { CarouselCardProps } from "./interface";
 
 export const carouselData: CarouselCardProps[] = [
   {
-    url: "/webp/friends-selfie.webp",
+    url: "/webp/couple-cinema.webp",
     title: "WAN 2.2",
     header: "WAN 2.2 Image generation",
     desc: "Generate complex images with the brand new powerful WAN 2.2 model. Exceptional prompt adherence and ultra-realistic features.",
@@ -23,7 +23,7 @@ export const carouselData: CarouselCardProps[] = [
     buttonText: "Try GHN 5.1"
   },
   {
-    url: "/webp/couple-cinema.webp",
+    url: "/webp/friends-selfie.webp",
     title: "CIE 1.0",
     header: "Cinematic Experience",
     desc: "Experience the next level of image generation with CIE 1.0, delivering stunning cinematic visuals and unparalleled detail.",
