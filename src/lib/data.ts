@@ -1,4 +1,4 @@
-import { CarouselCardProps } from "./interface";
+import { CarouselCardProps, GenerateCardProps } from "./interface";
 
 export const carouselData: CarouselCardProps[] = [
   {

@@ -21,13 +21,13 @@ const buttonVariants = cva(
           "hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50 cursor-pointer",
         link: "text-primary underline-offset-4 hover:underline cursor-pointer",
         carousel:
-          "text-black bg-white hover:bg-white hover:scale-105 cursor-pointer animate-bounce hover-animate-duration-900 hover:animate-none hover:bg-blue-500 hover:text-white shadow-lg",
+          "text-black text-[12px] md:text-sm bg-white hover:bg-white hover:scale-105 cursor-pointer animate-bounce hover-animate-duration-900 hover:animate-none hover:bg-blue-500 hover:text-white shadow-lg",
       },
       size: {
         default: "h-9 px-4 py-2 has-[>svg]:px-3",
         sm: "h-8 rounded-md gap-1.5 px-3 has-[>svg]:px-2.5",
         lg: "h-10 rounded-md px-6 has-[>svg]:px-4",
-        carousel: "h-10 w-fit rounded-full px-6 has-[>svg]:px-4",
+        carousel: "h-8 md:h-10 w-fit rounded-full px-4 md:px-6 has-[>svg]:px-4",
         icon: "size-9",
       },
     },
